@@ -1,0 +1,8 @@
+ansible_user: u.ansible@BARZINI.LAN
+# ansible_password: BARzini&1979
+ansible_connection: winrm
+ansible_port: 5985
+ansible_winrm_transport: kerberos
+aansible_winrm_server_cert_validation: ignore
+ansible_become: false
+ansible_winrm_kinit_mode: manual

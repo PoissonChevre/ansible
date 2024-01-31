@@ -1,0 +1,11 @@
+[ubuntu]
+pfx-sit-002
+
+[win2k19SRV]
+srv-inf-001
+
+[win10pro]
+ppb-tst-001
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3

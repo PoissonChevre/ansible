@@ -1,0 +1,23 @@
+---
+- name: "install-chocolatey"
+  hosts: win2k19SRV
+  gather_facts: true
+
+  tasks:
+    - name: Install chocolatey
+      win_chocolatey:
+          name:
+           - chocolatey
+           - chocolatey-core.extension
+          state: present
+
+    - name: Install colour-contrast-analyser
+      win_chocolatey:
+        name: colour-contrast-analyser
+        state: present
+        
+    - name: Install all updates and reboot as many times as needed
+      ansible.windows.win_updates:
+        category_names: '*'
+        reboot: true
+
