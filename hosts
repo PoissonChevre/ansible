@@ -1,10 +1,13 @@
 [ubuntu]
+# Pc FiXe Service IT 
 pfx-sit-002
 
-[win2k19SRV]
+[win2k19_srv]
+# Serveur 
 srv-inf-001
 
 [win10pro]
+# Pc PortaBle service TeST
 ppb-tst-001
 
 [all:vars]

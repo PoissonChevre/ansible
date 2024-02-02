@@ -1,8 +1,12 @@
+# User Authentication with Kerberos
+# https://docs.ansible.com/ansible-tower/latest/html/administration/kerberos_auth.html
+# https://docs.ansible.com/ansible-tower/3.3.1/html/administration/kerberos_auth.html
+
 ansible_user: u.ansible@BARZINI.LAN
-# ansible_password: BARzini&1979
 ansible_connection: winrm
 ansible_port: 5985
 ansible_winrm_transport: kerberos
-aansible_winrm_server_cert_validation: ignore
+ansible_winrm_server_cert_validation: ignore
 ansible_become: false
 ansible_winrm_kinit_mode: manual
+ansible_winrm_scheme: http
