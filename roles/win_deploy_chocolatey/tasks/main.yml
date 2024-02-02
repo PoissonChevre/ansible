@@ -5,9 +5,9 @@
 # https://community.chocolatey.org/packages
 
 - name: install chocolatey package & dependencies
-    win_chocolatey:
-      name: "{{ item }}"
-      state: present
-    loop:
-      - chocolatey
-      - chocolatey-core.extension
+  win_chocolatey:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - chocolatey
+    - chocolatey-core.extension
