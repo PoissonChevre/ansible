@@ -1,2 +1,31 @@
 ---
 # tasks file for win_mount_network_drive
+# https://it-infra-ya.com/en/ansible-script_en/
+---
+  tasks:
+  - name: Run shell
+    win_shell: |
+      # Note: This script must be run with administrative privileges to successfully create the scheduled task.
+      Set-ExecutionPolicy Bypass -Scope Process -Force
+
+      # Parameters for the scheduled task
+      $TaskName = "MapNetworkDriveTask"
+      $TaskDescription = "Map network drive at user logon"
+      $ScriptPath = "\\srv-inf-001\APP_SCRIPT$\MountNetworkDrive.ps1 
+
+      # Create a task trigger for user logon
+      $Trigger = New-ScheduledTaskTrigger -AtLogOn
+
+      # Action to perform (execute the mapping script)
+      $Action = New-ScheduledTaskAction -Execute "Powershell.exe" -Argument "-NoProfile -WindowStyle Hidden -File `"$ScriptPath`""
+
+      # Check if the task already exists and remove it if it does
+      $ExistingTask = Get-ScheduledTask | Where-Object { $_.TaskName -like $TaskName }
+      if ($ExistingTask) {
+      Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false
+      }
+
+      # Register the new task
+      Register-ScheduledTask -TaskName $TaskName -Trigger $Trigger -Action $Action -Description $TaskDescription -RunLevel Highest -User "SYSTEM"
+      Write-Host "Scheduled task created for mapping the network drive at user logon." -ForegroundColor DarKGreen
+      Set-ExecutionPolicy default -Scope Process -Force
