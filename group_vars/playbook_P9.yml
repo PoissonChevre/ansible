@@ -1,16 +1,19 @@
 ---
+# https://www.cherryservers.com/blog/ansible-roles-tutorial
+# mkdir roles && cd roles 
+# ansible-galaxy init "role name"
 
 - hosts: ubuntu
   become: true
   roles:
     - linux_mount_network_drive
-    - linux_deploy_Kontrast
+    - linux_deploy_kontrast
     - linux_apt_update
 
 - hosts: win10pro
   become: true
   roles:
     - win_mount_network_drive
-    - win_deploy_Chocolatey
-    - win_deploy_Colour_Contrast_Analyser
+    - win_deploy_chocolatey
+    - win_deploy_colour_contrast_analyser
     - win_chocolatey_update
