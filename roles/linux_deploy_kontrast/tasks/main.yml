@@ -1,2 +1,11 @@
 ---
-# tasks file for linux_deploy_Kontrast
+# tasks file for linux_deploy_kontrast
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+# https://apps.kde.org/fr/kontrast/
+# https://ubuntuhandbook.org/index.php/2021/11/check-contrast-colors-ubuntu-kontrast/
+
+  - name : update apt cache & install the latest kontrast package
+    apt: 
+      name: kontrast 
+      update_cache: yes
+      state: latest

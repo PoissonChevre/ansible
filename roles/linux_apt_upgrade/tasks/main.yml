@@ -1,0 +1,8 @@
+---
+# tasks file for linux_apt_update
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+
+- name: update all Debian/Ubuntu packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest

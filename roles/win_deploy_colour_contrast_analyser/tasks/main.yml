@@ -1,7 +1,8 @@
 ---
-# tasks file for win_deploy_colour_contrast_analyser
+# defaults file for win_deploy_colour_contrast_analyser    
+# https://www.tpgi.com/color-contrast-checker/
 
-  - name: install colour contrast analyser
-    win_chocolatey:
-    name: colour-contrast-analyser
-    state: present
+- name: install colour contrast analyser package
+      win_chocolatey:
+        name: colour-contrast-analyser
+        state: present
