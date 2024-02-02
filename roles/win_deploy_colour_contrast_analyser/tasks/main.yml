@@ -1,2 +1,7 @@
 ---
 # tasks file for win_deploy_colour_contrast_analyser
+
+  - name: install colour contrast analyser
+    win_chocolatey:
+    name: colour-contrast-analyser
+    state: present
