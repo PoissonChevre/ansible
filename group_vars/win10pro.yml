@@ -1,6 +1,7 @@
 # User Authentication with Kerberos
 # https://docs.ansible.com/ansible-tower/latest/html/administration/kerberos_auth.html
 # https://docs.ansible.com/ansible-tower/3.3.1/html/administration/kerberos_auth.html
+# cmd klist - kinit - kdestroy
 
 ansible_user: u.ansible@BARZINI.LAN
 # ansible_password: BARzini&1979
