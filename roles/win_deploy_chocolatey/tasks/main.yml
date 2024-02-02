@@ -5,8 +5,8 @@
 # https://community.chocolatey.org/packages
 
 - name: install chocolatey package & dependencies
-  win_chocolatey:
-  name:
-    - chocolatey
-    - chocolatey-core.extension
-  state: present
+    win_chocolatey:
+    name:
+      - chocolatey
+      - chocolatey-core.extension
+    state: present
