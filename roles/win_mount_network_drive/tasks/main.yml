@@ -2,7 +2,6 @@
 # tasks file for win_mount_network_drive
 # https://it-infra-ya.com/en/ansible-script_en/
 
-  tasks:
   - name: Run shell
     win_shell: |
       # Note: This script must be run with administrative privileges to successfully create the scheduled task.
