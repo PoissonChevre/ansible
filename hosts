@@ -14,9 +14,9 @@ srv-inf-001
 # Pc PortaBle service TeST
 ppb-tst-001
 
-[py3_hosts]
-ubuntu
-linux_srv
-
-[py3_hosts:vars]
-ansible_python_interpreter=/usr/bin/python3
+# [py3_hosts]
+# ubuntu
+# linux_srv
+# 
+# [py3_hosts:vars]
+# ansible_python_interpreter=/usr/bin/python3
