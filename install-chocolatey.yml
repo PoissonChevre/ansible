@@ -1,6 +1,6 @@
 ---
 - name: "install-chocolatey"
-  hosts: win2k19SRV
+  hosts: win10pro
   gather_facts: true
 
   tasks:
