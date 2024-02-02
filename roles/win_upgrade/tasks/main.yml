@@ -1,6 +1,7 @@
 ---
-# defaults file for win_deploy_colour_contrast_analyser 
-  - name: Install all updates and reboot as many times as needed
+# defaults file for win_upgrade 
+
+- name: Install all updates and reboot as many times as needed
     ansible.windows.win_updates:
       category_names: '*'
       reboot: true

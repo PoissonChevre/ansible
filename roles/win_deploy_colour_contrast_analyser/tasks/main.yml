@@ -3,6 +3,6 @@
 # https://www.tpgi.com/color-contrast-checker/
 
 - name: install colour contrast analyser package
-      win_chocolatey:
-        name: colour-contrast-analyser
-        state: present
+  win_chocolatey:
+    name: colour-contrast-analyser
+    state: present

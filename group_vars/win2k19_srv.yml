@@ -2,7 +2,7 @@
 # https://docs.ansible.com/ansible-tower/latest/html/administration/kerberos_auth.html
 # https://docs.ansible.com/ansible-tower/3.3.1/html/administration/kerberos_auth.html
 
-ansible_user: u.ansible@barzani.lan
+ansible_user: u.ansible@BARZINI.LAN
 ansible_connection: winrm
 ansible_port: 5985
 ansible_winrm_transport: kerberos
