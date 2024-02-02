@@ -1,14 +1,22 @@
+[linux_srv]
+# Serveur debian GLPI & Ansible
+srv-inf-002
+
 [ubuntu]
 # Pc FiXe Service IT 
 pfx-sit-002
 
 [win2k19_srv]
-# Serveur 
+# Serveur ADDS|DNS|DHCP
 srv-inf-001
 
 [win10pro]
 # Pc PortaBle service TeST
 ppb-tst-001
 
-[all:vars]
+[py3_hosts]
+ubuntu
+linux_srv
+
+[py3_hosts:vars]
 ansible_python_interpreter=/usr/bin/python3
