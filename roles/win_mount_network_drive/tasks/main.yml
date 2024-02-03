@@ -2,18 +2,14 @@
 # tasks file for win_mount_network_drive
 # https://it-infra-ya.com/en/ansible-script_en/
 
-- name: run shell powershell script 
-  ansible.windows.win_shell: |
-    Set-ExecutionPolicy Bypass -Scope Process -Force
-    $TaskName = "MapNetworkDriveTask"
-    $TaskDescription = "Map network drive at user logon"
-    $ScriptPath = "\\srv-inf-001\APP_SCRIPT$\MountNetworkDrive.ps1" 
-    $Trigger = New-ScheduledTaskTrigger -AtLogOn
-    $Action = New-ScheduledTaskAction -Execute "Powershell.exe" -Argument "-NoProfile -WindowStyle Hidden -File `"$ScriptPath`""
-    $ExistingTask = Get-ScheduledTask | Where-Object { $_.TaskName -like $TaskName }
-    if ($ExistingTask) {
-    Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false
-    }
-    Register-ScheduledTask -TaskName $TaskName -Trigger $Trigger -Action $Action -Description $TaskDescription -RunLevel Highest -User "SYSTEM"
-    Write-Host "Scheduled task created for mapping the network drive at user logon." -ForegroundColor DarKGreen
-    Set-ExecutionPolicy default -Scope Process -Force
+- name: Create task to run a custom powershell script as network service on logon
+  community.windows.win_scheduled_task:
+    name: MapNetworkDriveTask
+    description: Map network drive at user logon
+    actions:
+    - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+      arguments: "-ExecutionPolicy Bypass -NonInteractive -File \\srv-inf-001\APP_SCRIPT$\MountNetworkDrive.ps1"
+    triggers:
+    - type: logon
+    run_level: highest
+    state: present
