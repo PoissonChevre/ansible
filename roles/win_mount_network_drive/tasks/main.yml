@@ -9,7 +9,7 @@
     description: Map network drive at user logon
     actions:
     - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-      arguments: "-ExecutionPolicy Bypass -Force -File \\\\SRV-INF-001\\APP_SCRIPT$\\MountNetworkDrive.ps1"
+      arguments: "-ExecutionPolicy Bypass -NonInteractive -File \\\\SRV-INF-001\\APP_SCRIPT$\\MountNetworkDrive.ps1"
     triggers:
     - type: logon
     run_level: highest
