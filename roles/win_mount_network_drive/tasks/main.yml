@@ -1,8 +1,9 @@
 ---
 # tasks file for win_mount_network_drive
 # https://it-infra-ya.com/en/ansible-script_en/
+# https://docs.ansible.com/ansible/latest/collections/community/windows/win_scheduled_task_module.html
 
-- name: Create task to run a custom powershell script as network service on logon
+- name: Create task to run a custom powershell script on logon
   community.windows.win_scheduled_task:
     name: MapNetworkDriveTask
     description: Map network drive at user logon
