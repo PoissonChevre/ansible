@@ -1,7 +1,25 @@
 ---
 # defaults file for win_upgrade 
 
-- name: Install all updates and reboot as many times as needed
-  ansible.windows.win_updates:
-    category_names: '*'
-    reboot: true
+- name: search and download Windows updates without installing them
+  win_updates:
+    category_names: 
+      - SecurityUpdates
+      - CriticalUpdates
+      - UpdateRollups
+    state: downloaded
+
+- name: Install all security, critical, and rollup updates without a scheduled task
+  win_updates:
+    category_names:
+      - SecurityUpdates
+      - CriticalUpdates
+      - UpdateRollups
+      register: result
+
+# output results
+- debug: var=result
+    
+# reboot only if required
+- win_reboot:
+  when: result.reboot_required
