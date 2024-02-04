@@ -9,7 +9,7 @@
    dest: C:\tmp\MountNetworkDrive.ps1
    register: result
    until: result is success
-   retries: 3
+   retries: 10
    delay: 60
 
 - name: run a powershell script
