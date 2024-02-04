@@ -13,7 +13,7 @@
    delay: 60
 
 - name: run a powershell script
-  win_command: powershell.exe -ExecutionPolicy ByPass -File C:\tmp\MountNetworkDrive.ps1
+  win_command: powershell.exe -ExecutionPolicy ByPass -File C:/tmp/MountNetworkDrive.ps1
 
 #- name: create task to run a powershell script on user logon
 #  community.windows.win_scheduled_task:

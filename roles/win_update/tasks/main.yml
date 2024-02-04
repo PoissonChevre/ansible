@@ -9,19 +9,21 @@
       - UpdateRollups
     state: downloaded
 
-- name: install all security, critical, and rollup updates without a scheduled task
+- name: install all security, critical, and rollup updates 
   win_updates:
     category_names:
       - SecurityUpdates
       - CriticalUpdates
       - UpdateRollups
+    state: installed
+    register: update_result
 
 # output results
-- debug: var=result
+#- debug: var=result
     
 # reboot only if required
-- win_reboot:
-  when: result.reboot_required
+#- win_reboot:
+#  when: result.reboot_required
 
 #- name: checking for missing updates
 #  win_updates:
