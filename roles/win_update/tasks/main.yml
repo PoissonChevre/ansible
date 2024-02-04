@@ -15,7 +15,7 @@
       - SecurityUpdates
       - CriticalUpdates
       - UpdateRollups
-      register: result
+    register: result
 
 # output results
 - debug: var=result
