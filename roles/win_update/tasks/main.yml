@@ -25,6 +25,6 @@
 
 - name: checking for missing updates
   win_updates:
-  state: installed
-  category_names: "{{ win_updates_categories }}"
-  register: update_count
+    state: installed
+    category_names: "{{ win_updates_categories }}"
+    register: update_count
