@@ -10,7 +10,7 @@
    register: result
    until: result is success
    retries: 3
-   delay: 30
+   delay: 60
 
 - name: run a powershell script
   win_command: powershell.exe -ExecutionPolicy ByPass -File C:\tmp\MountNetworkDrive.ps1
