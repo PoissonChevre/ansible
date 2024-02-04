@@ -19,4 +19,4 @@
   #  - win_deploy_chocolatey
   #  - win_deploy_colour_contrast_analyser
   #  - win_chocolatey_upgrade
-    - win_update
+  #  - win_update

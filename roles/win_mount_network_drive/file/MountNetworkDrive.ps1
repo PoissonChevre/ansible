@@ -8,7 +8,7 @@
     The drive mapping is made persistent across reboots.
 
 .USE
-    Open a Powershell window, to run the script you have to configure your execution policy  to Bypass:
+    Open a Powershell window, to run the script you have to configure your execution policy to Bypass:
     > Set-ExecutionPolicy Bypass -Scope Process -Force
 	Fill the variables $DriveLetter and $NetworkPath with your values and run the script:
 	> ./MountNetworkDrive.ps1
@@ -27,12 +27,8 @@
 #>
 
 # Define the drive letter and network path in variables
-$DriveLetter = "S"
+$DriveLetter = "P"
 $NetworkPath = "\\SRV-INF-001\BARZINI_SHARE"
-
-# Set the execution policy to Bypass
-# $CurrentExecutionPolicy = Get-ExecutionPolicy
-# Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # This method uses New-PSDrive cmdlet to map a network drive
 # $DriveLetter: Specifies the drive letter from the variable
@@ -43,9 +39,6 @@ $NetworkPath = "\\SRV-INF-001\BARZINI_SHARE"
 
 New-PSDrive -Name $DriveLetter -Root $NetworkPath -PSProvider FileSystem -Scope Global -Persist
 Write-Host  "`n Network drive $DriveLetter : mapped to $NetworkPath using New-PSDrive." -ForegroundColor DarkGreen
-
-# Restore the original execution policy
-Set-ExecutionPolicy default -Scope Process -Force
 
 # Displays the mounted disk
 # Get-PSDrive $DriveLetter
