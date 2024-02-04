@@ -15,7 +15,6 @@
       - SecurityUpdates
       - CriticalUpdates
       - UpdateRollups
-    register: update_result
 
 # output results
 - debug: var=result
@@ -23,3 +22,9 @@
 # reboot only if required
 - win_reboot:
   when: result.reboot_required
+
+- name: checking for missing updates
+  win_updates:
+  state: installed
+  category_names: "{{ win_updates_categories }}"
+  register: update_count
