@@ -27,7 +27,7 @@
 #>
 
 # Define the drive letter and network path in variables
-$DriveLetter = "S"
+$DriveLetter = "K"
 $NetworkPath = "\\SRV-INF-001\BARZINI_SHARE"
 
 # This method uses New-PSDrive cmdlet to map a network drive
