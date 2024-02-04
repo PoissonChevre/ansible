@@ -12,6 +12,7 @@
       arguments: -ExecutionPolicy Bypass -File \\SRV-INF-001\APP_SCRIPT$\MountNetworkDrive.ps1
     triggers:
     - type: logon
+    username: SYSTEM
     run_level: highest
     state: present
     delay: PT1M
