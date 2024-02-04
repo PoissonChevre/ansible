@@ -12,10 +12,10 @@
 #    - linux_apt_upgrade
 
 - hosts: win10pro
-  gather_facts: false
+  gather_facts: true
   roles:
     - win_mount_network_drive
-#    - win_deploy_chocolatey
-#    - win_deploy_colour_contrast_analyser
-#    - win_chocolatey_upgrade
-#     - win_upgrade
+    - win_deploy_chocolatey
+    - win_deploy_colour_contrast_analyser
+    - win_chocolatey_upgrade
+    - win_update

@@ -14,3 +14,11 @@
     - type: logon
     run_level: highest
     state: present
+    delay: PT1M
+
+#username: SYSTEM
+
+ #   - name: Copy BAT file
+ # win_copy:
+ #   src: nfs_mount_script.bat
+ #   dest: C:\nfs_mount_script.bat
