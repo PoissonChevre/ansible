@@ -6,7 +6,7 @@
 - name: copy powershell script on local machine
   win_copy:
    src: /etc/ansible/roles/win_mount_network_drive/file/MountNetworkDrive.ps1
-   dest: C:\Temp\MountNetworkDrive.ps1
+   dest: C:\Users\%USERNAME%\MountNetworkDrive.ps1
 
 - name: create task to run a powershell script on user logon
   community.windows.win_scheduled_task:
@@ -21,9 +21,3 @@
     state: present
     delay: PT1M
 
-#username: SYSTEM
-
- #   - name: Copy BAT file
- # win_copy:
- #   src: nfs_mount_script.bat
- #   dest: C:\nfs_mount_script.bat
