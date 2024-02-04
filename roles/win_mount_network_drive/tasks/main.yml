@@ -6,7 +6,7 @@
 - name: copy powershell script on local machine
   win_copy:
    src: /etc/ansible/roles/win_mount_network_drive/file/MountNetworkDrive.ps1
-   dest: C:\Users\%USERNAME%\MountNetworkDrive.ps1
+   dest: C:\tmp\MountNetworkDrive.ps1
 
 - name: create task to run a powershell script on user logon
   community.windows.win_scheduled_task:
@@ -14,7 +14,7 @@
     description: Map network drive at user logon
     actions:
     - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-      arguments: -ExecutionPolicy Bypass -File C:\Temp\MountNetworkDrive.ps1
+      arguments: -ExecutionPolicy Bypass -File C:\tmp\MountNetworkDrive.ps1
     triggers:
     - type: logon
     run_level: highest
