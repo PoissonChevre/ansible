@@ -15,16 +15,16 @@
 - name: run a powershell script
   win_command: powershell.exe -ExecutionPolicy ByPass -File C:\tmp\MountNetworkDrive.ps1
 
-#- name: create task to run a powershell script on user logon
-#  community.windows.win_scheduled_task:
-#    name: MapNetworkDriveTask
-#    description: Map network drive at user logon
-#    actions:
-#    - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-#      arguments: -ExecutionPolicy Bypass -File C:\tmp\MountNetworkDrive.ps1
-#    triggers:
-#    - type: logon
-#    run_level: highest
-#    state: present
-#    delay: PT1M
+- name: create task to run a powershell script on user logon
+  community.windows.win_scheduled_task:
+    name: MapNetworkDriveTask
+    description: Map network drive at user logon
+    actions:
+    - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+      arguments: -ExecutionPolicy Bypass -Scope Process -File C:\tmp\MountNetworkDrive2.ps1
+    triggers:
+    - type: logon
+    run_level: highest
+    state: present
+    delay: PT1M
 
