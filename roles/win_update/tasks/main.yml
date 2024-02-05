@@ -1,5 +1,5 @@
 ---
-# defaults file for win_update 
+# defaults file for win_update and upgrade chocolatey packages
 
 - name: search and download Windows updates without installing them
   win_updates:
@@ -17,6 +17,14 @@
       - UpdateRollups
     state: installed
     register: update_result
+
+# chocolatey upgrade packages
+# https://docs.ansible.com/ansible/latest/collections/chocolatey/chocolatey/win_chocolatey_module.html
+
+- name: chocolatey upgrade installed packages
+  win_chocolatey:
+    name: all
+    state: latest
 
 # output results
 #- debug: var=result
