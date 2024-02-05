@@ -27,14 +27,14 @@
 #>
 
 # Define the drive letter and network path in variables
-$DriveLetter = "K"
+$DriveLetter = "P"
 $NetworkPath = "\\SRV-INF-001\BARZINI_SHARE"
 
 # This method uses New-PSDrive cmdlet to map a network drive
 # $DriveLetter: Specifies the drive letter from the variable
 # $NetworkPath: Specifies the UNC path to the network share from the variable
 # -PSProvider: Specifies the provider, FileSystem for network drives
-# -Scope Global Mount for All users on the machine
+# -Scope Global Mount for All users on the local machine
 # -Persist: Makes the drive mapping persistent across reboots
 
 New-PSDrive -Name $DriveLetter -Root $NetworkPath -PSProvider FileSystem -Scope Global -Persist
