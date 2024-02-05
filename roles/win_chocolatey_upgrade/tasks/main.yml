@@ -1,8 +1,0 @@
----
-# defaults file for win_chocolatey_upgrade_packages
-# https://docs.ansible.com/ansible/latest/collections/chocolatey/chocolatey/win_chocolatey_module.html
-
-- name: chocolatey upgrade installed packages
-  win_chocolatey:
-    name: all
-    state: latest
