@@ -18,6 +18,8 @@
 - name: create task to run a powershell script on user logon
   community.windows.win_scheduled_task:
     name: MapNetworkDriveTask
+    usersname: DOMAIN\Users
+    logon_type: password
     description: Map network drive at user logon
     username: Users
     actions:
@@ -27,5 +29,5 @@
     - type: logon
     run_level: highest
     state: present
-    delay: PT1M
+#    delay: PT1M
 
