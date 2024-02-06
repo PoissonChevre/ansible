@@ -23,7 +23,7 @@
       -DOMAIN\users
     actions:
     - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-      arguments: -ExecutionPolicy Bypass -Scope Process -File C:\tmp\MountNetworkDrive.ps1
+      arguments: -ExecutionPolicy Bypass  -File C:\tmp\MountNetworkDrive.ps1
     triggers:
     - type: logon
     run_level: highest
