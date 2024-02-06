@@ -21,10 +21,10 @@
     description: Map network drive at user logon
     actions:
     - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-      arguments: -ExecutionPolicy Bypass -Scope Process -File C:\tmp\MountNetworkDrive.ps1
+      arguments: -ExecutionPolicy Bypass -Scope Global -File C:\tmp\MountNetworkDrive.ps1
     triggers:
     - type: logon
     run_level: highest
     state: present
-    delay: PT1M
+#    delay: PT1M
 
