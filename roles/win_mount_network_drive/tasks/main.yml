@@ -17,7 +17,7 @@
   ansible.windows.win_user_right:
     name: SeBatchLogonRight
     users:
-    - BARZINI\User
+    - BARZINI\Users
     action: add
 
 - name: create task to run a powershell script on user logon
