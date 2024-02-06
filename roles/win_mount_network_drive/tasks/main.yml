@@ -20,7 +20,7 @@
     name: MapNetworkDriveTask
     description: Map network drive at user logon
     users:
-      -barzini.lan\Users
+      -BARZINI\Users
     actions:
     - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
       arguments: -ExecutionPolicy Bypass  -File C:\tmp\MountNetworkDrive.ps1
