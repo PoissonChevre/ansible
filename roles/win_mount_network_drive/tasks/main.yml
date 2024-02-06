@@ -25,7 +25,7 @@
 - name: create task to run a powershell script on user logon
   community.windows.win_scheduled_task:
     name: MapNetworkDriveTask
-    usersname:  r.charlier@BARZINI.LAN
+    usersname:  BARZINI\r.charlier
     description: Map network drive at user logon
     actions:
     - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
