@@ -19,7 +19,7 @@
   ansible.windows.win_user_right:
     name: MapNetworkDriveTask
     users:
-    - DOMAIN\Users
+    - BARZINI\Users
     action: add
 
 - name: create task to run a powershell script on user logon
