@@ -19,8 +19,8 @@
   community.windows.win_scheduled_task:
     name: MapNetworkDriveTask
     description: Map network drive at user logon
-    users:
-      -DOMAIN\users
+   # users:
+   #   -DOMAIN\users
     actions:
     - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
       arguments: -ExecutionPolicy Bypass  -File C:\tmp\MountNetworkDrive.ps1
