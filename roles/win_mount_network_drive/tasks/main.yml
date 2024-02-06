@@ -15,13 +15,17 @@
 #- name: run a powershell script
 #  win_command: powershell.exe -ExecutionPolicy ByPass -File C:\tmp\MountNetworkDrive.ps1
 
+- name: Add DOMAIN/Users the right to run scheduled task "MapNetworkDriveTask"
+  ansible.windows.win_user_right:
+    name: MapNetworkDriveTask
+    users:
+    - BARZINI\Users
+    action: add
+
 - name: create task to run a powershell script on user logon
   community.windows.win_scheduled_task:
     name: MapNetworkDriveTask
-    usersname: DOMAIN\Users
-    logon_type: password
     description: Map network drive at user logon
-    username: Users
     actions:
     - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
       arguments: -ExecutionPolicy Bypass  -File C:\tmp\MountNetworkDrive.ps1
