@@ -29,9 +29,9 @@
 # output results
 #- debug: var=result
     
-# reboot only if required
-#- win_reboot:
-#  when: result.reboot_required
+ reboot only if required
+- win_reboot:
+  when: result.reboot_required
 
 #- name: checking for missing updates
 #  win_updates:
