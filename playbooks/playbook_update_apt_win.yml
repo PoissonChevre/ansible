@@ -11,6 +11,5 @@
 
 - hosts: win10pro
   gather_facts: true
-  gather_facts: false
   roles:
     - win_update
