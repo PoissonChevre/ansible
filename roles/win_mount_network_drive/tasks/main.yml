@@ -11,7 +11,7 @@
    until: result is success
    delay: 60
 
-- name: create task to run the script (on logon)  that mount the drive BARZINI_SHARE
+- name: create a task (on logon) to run the script that mount the network drive 
   community.windows.win_scheduled_task:
     name: MapNetworkDriveTask
     group: Domain Users

@@ -3,17 +3,14 @@
 # mkdir roles && cd roles 
 # ansible-galaxy init "role name"
 
-- hosts: ubuntu
-  gather_facts: true
-  become: true
-  roles:
-    - linux_apt_upgrade
+# - hosts: ubuntu
+#   gather_facts: true
+#   become: true
+#   roles:
+#     - linux_apt_upgrade
 
 - hosts: win10pro
   gather_facts: true
-#  gather_facts: false
+  gather_facts: false
   roles:
-    - win_mount_network_drive
-  #  - win_deploy_chocolatey
-  #  - win_deploy_colour_contrast_analyser
-  #  - win_update
+    - win_update
