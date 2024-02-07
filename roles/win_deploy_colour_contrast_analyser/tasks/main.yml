@@ -1,8 +1,11 @@
 ---
 # defaults file for win_deploy_colour_contrast_analyser    
 # https://www.tpgi.com/color-contrast-checker/
+# https://community.chocolatey.org/packages/colour-contrast-analyser#ansible
 
-- name: install colour contrast analyser package
+- name: Install colour-contrast-analyser
   win_chocolatey:
     name: colour-contrast-analyser
+ #   version: '3.5.1'
+ #   source: \\SRV-INF-001\APP_SCRIPT$\
     state: present
