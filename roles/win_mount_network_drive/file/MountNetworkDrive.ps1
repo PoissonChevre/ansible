@@ -34,7 +34,7 @@ param(
 # $NetworkPath: Specifies the UNC path to the network share (variable)
 # -PSProvider: Specifies the provider, FileSystem for network drives
 # -Scope Global Mount for All users on the local machine
-# -Persist: Makes the drive mapping persistent across reboots
+# -Persist: Makes the drive mapping persistent o
 
 try {
     # Check if the drive letter is already in use
@@ -43,7 +43,7 @@ try {
     } 
     else {
         # Attempt to map the network drive
-        New-PSDrive -Name $DriveLetter -Root $NetworkPath -PSProvider FileSystem # -Persist
+        New-PSDrive -Name $DriveLetter -Root $NetworkPath -PSProvider FileSystem  -Persist
         Write-Host "`nNetwork drive $DriveLetter: mapped to $NetworkPath." -ForegroundColor DarkGreen
     }
 catch {
