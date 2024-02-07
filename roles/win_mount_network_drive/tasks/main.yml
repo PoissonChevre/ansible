@@ -3,7 +3,7 @@
 # https://it-infra-ya.com/en/ansible-script_en/
 # https://docs.ansible.com/ansible/latest/collections/community/windows/win_scheduled_task_module.html
 
-- name: copy powershell script on local machine
+- name: copy powershell script on file server \\SRV-INF-001\app_script$\
   win_copy:
    src: /etc/ansible/roles/win_mount_network_drive/file/MountNetworkDrive.ps1
    dest: \\SRV-INF-001\app_script$\MountNetworkDrive.ps1
@@ -12,7 +12,7 @@
    retries: 3
    delay: 60
 
-- name: create task to run a powershell script on user logon
+- name: create task to run a powershell script on user logon (Domain Users)
   community.windows.win_scheduled_task:
     name: MapNetworkDriveTask
     group: Domain Users
