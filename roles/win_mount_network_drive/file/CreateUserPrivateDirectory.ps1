@@ -24,12 +24,11 @@
 # Import the Active Directory module
 Import-Module ActiveDirectory
 
-param(
-    # Specify the base path for user folders
-    [String]$BasePath = "S:\BARZINI_SHARE\USERS_SHARE",
-    # Specify user accounts to be excluded from processing
-    [String]$ExcludedAccounts = @("Administrator", "u.ansible", "sshd" , "Guest")
-)
+# Specify the base path for user folders
+$BasePath = "S:\BARZINI_SHARE\USERS_SHARE",
+# Specify user accounts to be excluded from processing
+$ExcludedAccounts = @("Administrator", "u.ansible", "sshd" , "Guest")
+
 
 # Get enabled users without a home directory, excluding specified accounts
 $Users = Get-ADUser -Filter 'Enabled -eq $true' -Properties HomeDirectory |
