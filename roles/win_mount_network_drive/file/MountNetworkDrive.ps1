@@ -29,27 +29,40 @@ param(
     [string]$NetworkPath = "\\SRV-INF-001\BARZINI_SHARE"
 )
 
+# https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4
+# Errors are treated as terminating, causing the script to stop executing immediately. An error message is displayed.
+$ErrorActionPreference = 'Stop'
+
 # This method uses New-PSDrive cmdlet to map a network drive
-# $DriveLetter: Specifies the drive letter from the (variable)
+# $DriveLetter: Specifies the drive letter (variable)
 # $NetworkPath: Specifies the UNC path to the network share (variable)
 # -PSProvider: Specifies the provider, FileSystem for network drives
-# -Scope Global Mount for All users on the local machine
-# -Persist: Makes the drive mapping persistent o
+# -Persist: Makes the drive mapping persistent 
 
 try {
-    # Check if the drive letter is already in use
-    if ((Get-PSDrive -Name $DriveLetter -ErrorAction SilentlyContinue)) {
-        Write-Warning "Drive letter $DriveLetter is already in use." -ForegroundColor DarkYellow
-    } 
-    else {
-        # Attempt to map the network drive
-        New-PSDrive -Name $DriveLetter -Root $NetworkPath -PSProvider FileSystem  -Persist
-        Write-Host "`nNetwork drive $DriveLetter: mapped to $NetworkPath." -ForegroundColor DarkGreen
+    # Check if the drive letter is already in use + WARNING output 
+    if ((Get-PSDrive -Name $DriveLetter -ErrorAction SilentlyContinue)) 
+        {
+        Write-Warning "Drive letter $DriveLetter is already in use." 
+        } 
+    else 
+        {
+        # Attempt to map the network drive + output
+        New-PSDrive -Name $DriveLetter -Root $NetworkPath -PSProvider FileSystem -Persist
+        Write-Output "Network drive $DriveLetter : mapped to $NetworkPath."
+        }
     }
-catch {
-    Write-Error "Failed to map network drive $DriveLetter: to $NetworkPath. Error: $_" -ForegroundColor DarkRed
-    }
-}
+catch 
+        {
+         # ERROR output the error(s)
+        Write-Error "ERROR: Failed to map network drive $DriveLetter to $NetworkPath : $_"
+        }
+finally 
+        {
+        # $ErrorActionPreference = Restore the initial value: errors are suppressed, but the script continues to run
+        $ErrorActionPreference = 'Continue'
+         }
+
 
 # Displays the mounted disk
 # Get-PSDrive $DriveLetter
