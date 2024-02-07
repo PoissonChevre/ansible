@@ -1,7 +1,8 @@
 ---
 # https://www.cherryservers.com/blog/ansible-roles-tutorial
-# mkdir roles && cd roles 
-# ansible-galaxy init "role name"
+# # ansible-galaxy init "role name"
+
+
 
 #- hosts: ubuntu
 #  gather_facts: true
