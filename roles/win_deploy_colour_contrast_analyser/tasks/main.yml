@@ -2,24 +2,18 @@
 # defaults file for win_deploy_colour_contrast_analyser    
 # https://www.tpgi.com/color-contrast-checker/
 # https://community.chocolatey.org/packages/colour-contrast-analyser#ansible
-# C:\ProgramData\chocolatey\lib\colour-contrast-analyser 
+# C:\ProgramData\chocolatey\lib\colour-contrast-analyser\tools\ 
 
 - name: install colour-contrast-analyser
   win_chocolatey:
-    name: colour-contrast-analyser 3.5.1
- #   version: '3.5.1'
- #   source: \\SRV-INF-001\APP_SCRIPT$\
+    name: colour-contrast-analyser
+    version: 3.5.1
     state: present
 
-- name: Create an application shortcut on the desktop for CCA
+- name: Create an application shortcut on the desktop
   community.windows.win_shortcut:
-    src: C:\ProgramData\chocolatey\lib\colour-contrast-analyser\tools\cca.exe
-    dest: C:\Users\Public\Desktop\CCA.lnk
-    icon: C:\ProgramData\chocolatey\lib\colour-contrast-analyser\tools\cca.exe,0
+    description: colour contrast analyser
+    src: '%ProgramData%\chocolatey\lib\colour-contrast-analyser\tools\cca.exe'
+    dest: '%Public%\Desktop\CCA.lnk'
+    icon: '%ProgramData%\chocolatey\lib\colour-contrast-analyser\tools\cca.exe,0'
 
-# - name: Create the same shortcut using environment variables
-#   community.windows.win_shortcut:
-#     description: The Mozilla Firefox web browser
-#     src: '%ProgramData%\chocolatey\lib\colour-contrast-analyser\tools\cca.exe'
-#     dest: '%Public%\Desktop\CCA.lnk'
-#     icon: '%ProgramData%\chocolatey\lib\colour-contrast-analyser\tools\cca.exe,0'
