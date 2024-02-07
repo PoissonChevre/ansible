@@ -16,7 +16,7 @@
       - CriticalUpdates
       - UpdateRollups
     state: installed
-    register: update_result
+    #register: update_result
 
 # chocolatey upgrade packages
 # https://docs.ansible.com/ansible/latest/collections/chocolatey/chocolatey/win_chocolatey_module.html
