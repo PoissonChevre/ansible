@@ -10,7 +10,7 @@
     version: 3.5.1
     state: present
 
-- name: Create an application shortcut on the desktop
+- name: create an application shortcut on the desktop
   community.windows.win_shortcut:
     description: colour contrast analyser
     src: '%ProgramData%\chocolatey\lib\colour-contrast-analyser\tools\cca.exe'

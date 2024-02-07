@@ -13,4 +13,5 @@
 - hosts: win10pro
   gather_facts: true
   roles:
+    - win_deploy_chocolatey
     - win_deploy_colour_contrast_analyser
