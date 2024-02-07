@@ -3,23 +3,15 @@
 # https://it-infra-ya.com/en/ansible-script_en/
 # https://docs.ansible.com/ansible/latest/collections/community/windows/win_scheduled_task_module.html
 
-#- name: copy powershell script on local machine
-#  win_copy:
-#   src: /etc/ansible/roles/win_mount_network_drive/file/MountNetworkDrive.ps1
-#   dest: C:\tmp\MountNetworkDrive.ps1
-#   register: result
-#   until: result is success
-#   retries: 3
-#   delay: 60
+- name: copy powershell script on local machine
+  win_copy:
+   src: /etc/ansible/roles/win_mount_network_drive/file/MountNetworkDrive.ps1
+   dest: \\SRV-INF-001\app_script$\MountNetworkDrive.ps1
+   register: result
+   until: result is success
+   retries: 3
+   delay: 60
 
-#
-#- name: Update Local Security Policy to allow users to run scheduled tasks
-#  ansible.windows.win_user_right:
-#    name: SeBatchLogonRight
-#    users:
-#    - barzini.lan\BARZINI\Users
-#    action: add
-#
 - name: create task to run a powershell script on user logon
   community.windows.win_scheduled_task:
     name: MapNetworkDriveTask
@@ -32,4 +24,3 @@
     - type: logon
     run_level: highest
     state: present
-#    delay: PT1M

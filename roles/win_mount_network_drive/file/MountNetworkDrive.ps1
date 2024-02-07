@@ -37,7 +37,8 @@ $NetworkPath = "\\SRV-INF-001\BARZINI_SHARE"
 # -Scope Global Mount for All users on the local machine
 # -Persist: Makes the drive mapping persistent across reboots
 
-New-PSDrive -Name $DriveLetter -Root $NetworkPath -PSProvider FileSystem -Scope Global -Persist
+# New-PSDrive -Name $DriveLetter -Root $NetworkPath -PSProvider FileSystem -Scope Global -Persist
+New-PSDrive -Name $DriveLetter -Root $NetworkPath -PSProvider FileSystem -Scope Global 
 Write-Host  "`n Network drive $DriveLetter : mapped to $NetworkPath using New-PSDrive." -ForegroundColor DarkGreen
 
 # Displays the mounted disk
