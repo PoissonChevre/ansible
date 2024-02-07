@@ -3,9 +3,9 @@
 # https://www.tpgi.com/color-contrast-checker/
 # https://community.chocolatey.org/packages/colour-contrast-analyser#ansible
 
-- name: Install colour-contrast-analyser
+- name: install colour-contrast-analyser
   win_chocolatey:
-    name: colour-contrast-analyser
+    name: putty
  #   version: '3.5.1'
  #   source: \\SRV-INF-001\APP_SCRIPT$\
     state: present
