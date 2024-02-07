@@ -6,7 +6,7 @@
 
 - name: install colour-contrast-analyser
   win_chocolatey:
-    name: colour-contrast-analyse
+    name: colour-contrast-analyser
  #   version: '3.5.1'
  #   source: \\SRV-INF-001\APP_SCRIPT$\
     state: present
