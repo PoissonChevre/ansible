@@ -1,19 +1,19 @@
 <#
 .DESCRIPTION
-    PowerShell script to create/check the directories of the users at logon.
-    SCRIPT FORMATTING FOR MORE READABILITY: Header comment block, Variables names, Block Try-Catch, PascalCase, Comments
+	PowerShell script to create/check the directories of the users at logon
+    SCRIPT FORMATTING FOR MORE READIBILITY : Header comment block , Variables names, Block Try-Catch, PascalCase, Comments
 
 .PARAMETER BasePath
-    The path where to create the directories.
+    The path  where to create the directories.
 
 .PARAMETER ExcludedAccounts
-    The accounts to exclude.
+    The accounts to exclude
 
 .EXAMPLE
-    Open a PowerShell window, to run the script you have to configure your execution policy to Bypass:
+    Open a Powershell window, to run the script you have to configure your execution policy to Bypass:
     > Set-ExecutionPolicy Bypass -Scope Process -Force
-    Fill the variables $BasePath and $ExcludedAccounts with your values and run the script:
-    > .\CreateUserPrivateDirectory.ps1
+	Fill the variables $BasePath and $ExcludedAccounts with your values and run the script:
+	> .\CreateUserPrivateDirectory.ps1
 
 .NOTES
     AUTHOR: Renaud Charlier
@@ -24,9 +24,12 @@
 # Import the Active Directory module
 Import-Module ActiveDirectory
 
-# Define script parameters
-$ExcludedAccounts = @("Administrator", "u.ansible", "sshd", "Guest")
-$BasePath = "\\SRV-INF-001\BARZINI_SHARE\USERS_SHARE"
+param(
+    # Specify the base path for user folders
+    [String]$BasePath = "S:\BARZINI_SHARE\USERS_SHARE",
+    # Specify user accounts to be excluded from processing
+    [String]$ExcludedAccounts = @("Administrator", "u.ansible", "sshd" , "Guest")
+)
 
 # Get enabled users without a home directory, excluding specified accounts
 $Users = Get-ADUser -Filter 'Enabled -eq $true' -Properties HomeDirectory |
@@ -77,3 +80,4 @@ foreach ($User in $Users) {
         Set-Acl -Path $UserFolder -AclObject $Acl
     }
 }
+
