@@ -10,11 +10,26 @@
       update_cache: yes
       state: latest
 
-  - name: create an application symlink on the desktop
-    ansible.builtin.file:
-      src: /bin/kontrast
-      dest: /home/u.ansible@barzini.lan/Desktop/KONTRAST
-      owner: u.ansible@barzini.lan
-      group: domain users
-      mode: '1755'
-      state: link
+# Create kontrast shortcut on Ubuntu desktops 
+  - name: find desktop directory for all users
+    ansible.builtin.find:
+      paths: "/home"
+      file_type: directory
+      patterns: "Desktop"
+    register: desktop_dir 
+
+  - name: deploy kontrast desktop shortcut for each user
+    ansible.builtin.template:
+      src: kontrast.desktop.j2
+      dest: "{{ item.path }}/kontrast.desktop"
+      mode: '0755'
+    with_items: "{{ desktop_dirs.files }}"
+
+  #- name: create an application symlink on the desktop
+  #  ansible.builtin.file:
+  #    src: kontrast.desktop.j2
+  #    dest: /home/u.ansible@barzini.lan/Desktop/kontrast.desktop
+  #    owner: u.ansible@barzini.lan
+  #    group: domain users
+  #    mode: '0755'
+  #    state: link
