@@ -15,4 +15,4 @@
       src: /bin/kontrast
       dest: ~/Desktop/kontrast
       mode: '0755'
-      state: symlink
+      state: link
