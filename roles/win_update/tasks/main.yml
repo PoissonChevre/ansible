@@ -22,13 +22,7 @@
       - UpdateRollups
     state: installed
     reboot: true
-    reboot_timeout_sec: 240
-
-# reboot only if required
-#- name: reboot if required
-#  win_reboot:
-#    reboot_timeout_sec: 240
-#  when: update_result.reboot_required
+    reboot_timeout: 1200
 
 # chocolatey upgrade packages
 # https://docs.ansible.com/ansible/latest/collections/chocolatey/chocolatey/win_chocolatey_module.html
