@@ -16,5 +16,5 @@
       dest: /home/u.ansible@barzini.lan/Desktop/KONTRAST
       owner: u.ansible@barzini.lan
       group: domain users
-      mode: '0755'
-      state: symlink
+      mode: '1755'
+      state: link
