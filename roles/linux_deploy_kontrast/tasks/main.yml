@@ -4,13 +4,13 @@
 # https://apps.kde.org/fr/kontrast/
 # https://ubuntuhandbook.org/index.php/2021/11/check-contrast-colors-ubuntu-kontrast/
 
-  - name : update apt cache & install the latest kontrast package
+  - name: update apt cache & install the latest kontrast package
     apt: 
       name: kontrast 
       update_cache: yes
       state: latest
 
-  - name: Create desktop shortcut for Kontrast
+  - name: create desktop shortcut for Kontrast
     copy:
       dest: "/home/u.ansible@barzini.lan/Desktop/kontrast.desktop"
       content: |
