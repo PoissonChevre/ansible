@@ -13,7 +13,7 @@
 
   - name: create desktop shortcut 
     become: true
-    ansible.builtin.template:
+    ansible.builtin.file:
       dest: "/home/u.ansible@barzini.lan/Desktop/kontrast.desktop"
       content: kontrast.desktop.j2
  #  group: domain users
