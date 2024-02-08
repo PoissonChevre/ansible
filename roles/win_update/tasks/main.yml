@@ -1,22 +1,27 @@
 ---
 # defaults file for win_update and upgrade chocolatey packages
-
-#- name: search and download Windows updates without installing them
+#- name: checking for missing updates
 #  win_updates:
-#    category_names: 
-#      - SecurityUpdates
-#      - CriticalUpdates
-#      - UpdateRollups
-#    state: downloaded
+#    state: installed
+#    category_names: "{{ win_updates_categories }}"
+#    register: update_count
+
+- name: search and download Windows updates without installing them
+  win_updates:
+    category_names: 
+      - SecurityUpdates
+      - CriticalUpdates
+      - UpdateRollups
+    state: downloaded
 
 - name: install all security, critical, and rollup updates 
   win_updates:
     category_names:
       - SecurityUpdates
       - CriticalUpdates
-    #  - UpdateRollups
+      - UpdateRollups
     state: installed
-   # reboot: yes 
+ #   reboot: yes 
 
 # chocolatey upgrade packages
 # https://docs.ansible.com/ansible/latest/collections/chocolatey/chocolatey/win_chocolatey_module.html
@@ -26,18 +31,12 @@
 #- debug: var=result
     
 # reboot only if required
-#   - name: reboot if required
-#    win_reboot:
-#      reboot_timeout_sec: 240
-#    when: update_result.reboot_required
+- name: reboot if required
+    win_reboot:
+      reboot_timeout_sec: 240
+      when: update_result.reboot_required
 
-#- name: checking for missing updates
-#  win_updates:
-#    state: installed
-#    category_names: "{{ win_updates_categories }}"
-#    register: update_count
-
-#- name: chocolatey upgrade installed packages
-#  win_chocolatey:
-#    name: all
-#    state: latest
+- name: chocolatey upgrade installed packages
+  win_chocolatey:
+    name: all
+    state: latest
