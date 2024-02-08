@@ -11,7 +11,7 @@
       update_cache: yes
       state: latest
 
-  - name: create desktop shortcut for Kontrast
+  - name: create desktop shortcut 
     become: true
     copy:
       dest: "/home/u.ansible@barzini.lan/Desktop/kontrast.desktop"
