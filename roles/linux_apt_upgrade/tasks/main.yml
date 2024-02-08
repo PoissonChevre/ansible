@@ -1,8 +1,26 @@
 ---
 # tasks file for linux_apt_update
 # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+# https://www.toptechskills.com/ansible-tutorials-courses/ansible-apt-module-tutorial-examples/
 
-- name: update all Debian/Ubuntu packages to their latest version
-  ansible.builtin.apt:
+# update all packages with the apt module
+- name: update & upgrade all Debian/Ubuntu packages to their latest version
+  apt:
     name: "*"
     state: latest
+    force_apt_get: true
+    update_cache: true
+    cache_valid_time: 86400 # (s)|one day 
+  become: true
+
+# clean up the apt cache   
+- name: clean apt
+  apt:
+    autoclean: yes
+  become: true
+
+# remove package dependencies that are no longer required
+- name: clean apt
+  apt:
+    autoremove: true
+  become: true
