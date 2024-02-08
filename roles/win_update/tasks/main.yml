@@ -21,20 +21,16 @@
       - CriticalUpdates
       - UpdateRollups
     state: installed
- #   reboot: yes 
+    register: update_result
+
+# reboot only if required
+- name: reboot if required
+  win_reboot:
+    reboot_timeout_sec: 240
+  when: update_result.reboot_required
 
 # chocolatey upgrade packages
 # https://docs.ansible.com/ansible/latest/collections/chocolatey/chocolatey/win_chocolatey_module.html
-
-
-# output results
-#- debug: var=result
-    
-# reboot only if required
-- name: reboot if required
-    win_reboot:
-      reboot_timeout_sec: 240
-      when: update_result.reboot_required
 
 - name: chocolatey upgrade installed packages
   win_chocolatey:
