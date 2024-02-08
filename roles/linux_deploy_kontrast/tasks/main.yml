@@ -13,6 +13,6 @@
   - name: create an application symlink on the desktop
     ansible.builtin.file:
       src: /bin/kontrast
-      dest: ~/u.ansible@barzini.lan/Desktop/
+      dest: /home/u.ansible@barzini.lan/Desktop/
       mode: '0755'
       state: link
