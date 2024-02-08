@@ -11,22 +11,22 @@
       update_cache: yes
       state: latest
 
-  - name: create desktop shortcut 
-    become_user: u.ansible
-    copy:
-      dest: "/home/u.ansible@barzini.lan/Desktop/kontrast.desktop"
-      content: |
-        [Desktop Entry]
-        Version=1.0
-        Type=Application
-        Name=Kontrast
-        Icon=/usr/share/icons/hicolor/scalable/apps/org.kde.kontrast.svg
-        Exec=/bin/kontrast
-        Comment=Launch Kontrast Application
-        Categories=Utility;
-        Terminal=false
-    group: domain users
-    mode: '0755'
+ #- name: create desktop shortcut 
+ #  become_user: u.ansible
+ #  copy:
+ #    dest: "/home/u.ansible@barzini.lan/Desktop/kontrast.desktop"
+ #    content: |
+ #      [Desktop Entry]
+ #      Version=1.0
+ #      Type=Application
+ #      Name=Kontrast
+ #      Icon=/usr/share/icons/hicolor/scalable/apps/org.kde.kontrast.svg
+ #      Exec=/bin/kontrast
+ #      Comment=Launch Kontrast Application
+ #      Categories=Utility;
+ #      Terminal=false
+ #  group: domain users
+ #  mode: '0755'
 
  # Create kontrast shortcut on Ubuntu desktops 
  # - name: find desktop directory for all users
