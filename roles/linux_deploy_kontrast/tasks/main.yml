@@ -7,8 +7,8 @@
   - name: update apt cache & install the latest kontrast package
     apt: 
       name: kontrast 
-      update_cache: yes
-      state: latest
+    update_cache: yes
+    state: latest
 
   - name: create desktop shortcut for Kontrast
     copy:
