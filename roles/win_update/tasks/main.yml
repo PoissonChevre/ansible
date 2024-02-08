@@ -1,10 +1,11 @@
 ---
 # defaults file for win_update and upgrade chocolatey packages
-#- name: checking for missing updates
-#  win_updates:
-#    state: installed
-#    category_names: "{{ win_updates_categories }}"
-#    register: update_count
+
+- name: checking for missing updates
+  win_updates:
+    state: installed
+    category_names: "{{ win_updates_categories }}"
+    register: update_count
 
 - name: search and download updates without installing them
   win_updates:
