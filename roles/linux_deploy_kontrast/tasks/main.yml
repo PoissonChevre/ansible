@@ -9,3 +9,11 @@
       name: kontrast 
       update_cache: yes
       state: latest
+
+  - name: create an application symlink on the desktop
+    ansible.builtin.file:
+     src: 
+        src: /bin/kontrast
+        dest: ~/Desktop/kontrast
+  #      group: domain users
+        state: link
