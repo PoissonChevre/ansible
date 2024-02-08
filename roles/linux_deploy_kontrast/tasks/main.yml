@@ -12,8 +12,8 @@
       state: latest
 
   - name: create desktop shortcut 
-    become_user: u.ansible
-    copy:
+    become: true
+    ansible.builtin.template:
       dest: "/home/u.ansible@barzini.lan/Desktop/kontrast.desktop"
       content: kontrast.desktop.j2
  #  group: domain users
