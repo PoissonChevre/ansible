@@ -5,12 +5,14 @@
 # https://ubuntuhandbook.org/index.php/2021/11/check-contrast-colors-ubuntu-kontrast/
 
   - name: update apt cache & install the latest kontrast package
+    become: true
     apt: 
       name: kontrast 
     update_cache: yes
     state: latest
 
   - name: create desktop shortcut for Kontrast
+    become: true
     copy:
       dest: "/home/u.ansible@barzini.lan/Desktop/kontrast.desktop"
       content: |
