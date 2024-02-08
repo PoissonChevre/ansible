@@ -14,5 +14,5 @@
     ansible.builtin.file:
       src: /bin/kontrast
       dest: ~/Desktop/kontrast
-  #   group: domain users
-      state: link
+      mode: '0755'
+      state: symlink
