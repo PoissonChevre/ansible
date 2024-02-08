@@ -12,7 +12,7 @@
       state: latest
 
   - name: create desktop shortcut 
-    become: true
+    become_user: u.ansible
     copy:
       dest: "/home/u.ansible@barzini.lan/Desktop/kontrast.desktop"
       content: |
