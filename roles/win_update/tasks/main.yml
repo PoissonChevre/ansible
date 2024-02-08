@@ -17,7 +17,8 @@
       - UpdateRollups
     state: installed
     reboot: true
-    reboot_timeout: 1200
+    # Maximum seconds to wait for machine to re-appear on the network
+    reboot_timeout: 300 
 
 # chocolatey upgrade packages
 # https://docs.ansible.com/ansible/latest/collections/chocolatey/chocolatey/win_chocolatey_module.html
