@@ -27,6 +27,7 @@
         Terminal=false
     group: domain users
     mode: '0755'
+
  # Create kontrast shortcut on Ubuntu desktops 
  # - name: find desktop directory for all users
  #   ansible.builtin.find:
