@@ -9,7 +9,7 @@
    roles:
      - linux_apt_upgrade
 
-# - hosts: win10pro
-#   gather_facts: true
-#   roles:
-#     - win_update
+ - hosts: win10pro
+   gather_facts: true
+   roles:
+     - win_update

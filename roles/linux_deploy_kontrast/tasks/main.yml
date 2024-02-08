@@ -12,8 +12,7 @@
 
   - name: create an application symlink on the desktop
     ansible.builtin.file:
-     src: 
-        src: /bin/kontrast
-        dest: ~/Desktop/kontrast
-  #      group: domain users
-        state: link
+      src: /bin/kontrast
+      dest: ~/Desktop/kontrast
+  #   group: domain users
+      state: link
