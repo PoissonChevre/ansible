@@ -2,7 +2,8 @@
 
 #########################################################################################
 # Script to Mount SMB Share with Kerberos Authentication
-# 
+#
+# Description:
 # This script automates the process of mounting an SMB share using
 # Kerberos for authentication. It leverages the current user's environment
 # variables and assumes a valid Kerberos ticket is already obtained
@@ -22,7 +23,8 @@
 # 
 # Notes:
 #   - Ensure the user has necessary permissions for mounting and Kerberos authentication.
-#   - Customize SMB share path and mount point..
+#   - Customize SMB share path and mount point.
+
 # Good coding practices: variables, header, comments, environment variables & condition
 #########################################################################################
 

@@ -1,6 +1,6 @@
 ---
 # https://www.cherryservers.com/blog/ansible-roles-tutorial
-# # ansible-galaxy init "role name"
+# ansible-galaxy init "role name"
 
 - hosts: ubuntu
   gather_facts: true
@@ -8,8 +8,8 @@
   roles:
     - linux_deploy_kontrast
 
-#- hosts: win10pro
-#  gather_facts: true
-#  roles:
-#    - win_deploy_chocolatey
-#    - win_deploy_colour_contrast_analyser
+- hosts: win10pro
+  gather_facts: true
+  roles:
+    - win_deploy_chocolatey
+    - win_deploy_colour_contrast_analyser
