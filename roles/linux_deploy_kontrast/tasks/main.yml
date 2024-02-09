@@ -22,4 +22,5 @@
         chmod +x "$symlink_path"
       # create a desktop entry file
         echo -e "[Desktop Entry]\nName=Kontrast\nExec=$target_path\nType=Application" > "$symlink_path"
+        chown $user "$symlink_path"
       done
