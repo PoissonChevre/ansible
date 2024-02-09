@@ -1,0 +1,7 @@
+---
+# handlers file 
+
+- name: Restart sudo service
+  service:
+    name: sudo
+    state: restarted

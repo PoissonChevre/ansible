@@ -10,16 +10,34 @@
       - cifs-utils
     state: present
 
-- name: copy file with owner and permissions
-  ansible.builtin.copy:
-    src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
-    dest: /home/
-    owner: u.ansible
-    group: gdl_barzini_authentificated_users
-    mode: '0755'
+- name: add sudo configuration for executing bash script
+  lineinfile:
+    est: /etc/sudoers
+    line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/bash -c \"/srv/share/public/mount_smb_share.sh\""
+    state: present
+    validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
 
-- name: create logon script for all users (run the mount script)
-  template:
-    src: /etc/ansible/roles/linux_mount_network_drive/file/logon_mnt_smb.sh.j2
-    dest: /etc/profile.d/logon_mnt_smb.sh
-    mode: '0755'
+- name: add sudo configuration for mount command
+  lineinfile:
+  dest: /etc/sudoers
+  line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/mount"
+  state: present
+  alidate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
+
+- handlers:
+    - name: restart sudo service
+      import_tasks: handlers/restart_sudo.yml
+
+#- name: copy file with owner and permissions
+#  ansible.builtin.copy:
+#    src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
+#    dest: /home/
+#    owner: u.ansible
+#    group: gdl_barzini_authentificated_users
+#    mode: '0755'
+
+#- name: create logon task for all users (run the mount script)
+#  template:
+#    src: /etc/ansible/roles/linux_mount_network_drive/file/logon_mnt_smb.sh.j2
+#    dest: /etc/profile.d/logon_mnt_smb.sh
+#    mode: '0755'
