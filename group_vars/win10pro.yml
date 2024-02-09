@@ -5,7 +5,7 @@
 
 ansible_user: u.ansible@BARZINI.LAN
 ansible_connection: winrm
-ansible_port: 5985
+ansible_port: 5985 # HTTP | HTTPS=5986
 ansible_winrm_transport: kerberos
 ansible_winrm_server_cert_validation: ignore
 ansible_become: false
@@ -15,5 +15,7 @@ ansible_winrm_kerberos_delegation: true
 ansible_winrm_operation_timeout_sec: 30 # default 20s
 ansible_winrm_read_timeout_sec: 40 # default 30 s && > operation_timeout
 
-# ansible_password: BARzini&1979
+# other  Kerberos option "managed", create a kerberos ticket for the task 
+# then destroy it but mandatory to encrypt the password ==> VAULT
 # ansible_winrm_kinit_mode: managed
+# ansible_password: BARzini&1979

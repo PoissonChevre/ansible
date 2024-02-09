@@ -10,13 +10,6 @@
       - cifs-utils
     state: present
 
-#- name: add sudo configuration for executing bash script
-#  lineinfile:
-#    path: /etc/sudoers
-#    line: "%#1280401187 ALL=(ALL) NOPASSWD: /bin/bash -c \"/home/mount_smb_share.sh\"" # gid gdl_barzini_authentificated_users
-#    state: present
-#    validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
-
 - name: add sudo configuration for mount command
   lineinfile:
     path: /etc/sudoers
@@ -33,8 +26,3 @@
   #  group: domain users
     mode: '0755'
 
-#- name: create logon task for all users (run the mount script)
-#  template:
-#    src: /etc/ansible/roles/linux_mount_network_drive/file/logon_mnt_smb.sh.j2
-#    dest: /etc/profile.d/logon_mnt_smb.sh
-#    mode: '0755'
