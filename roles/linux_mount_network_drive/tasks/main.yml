@@ -10,19 +10,19 @@
       - cifs-utils
     state: present
 
-- name: add sudo configuration for executing bash script
-  lineinfile:
-    path: /etc/sudoers
-    line: "%#1280401187 ALL=(ALL) NOPASSWD: /bin/bash -c \"/home/mount_smb_share.sh\"" # gid gdl_barzini_authentificated_users
-    state: present
-    validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
+#- name: add sudo configuration for executing bash script
+#  lineinfile:
+#    path: /etc/sudoers
+#    line: "%#1280401187 ALL=(ALL) NOPASSWD: /bin/bash -c \"/home/mount_smb_share.sh\"" # gid gdl_barzini_authentificated_users
+#    state: present
+#    validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
 
 - name: add sudo configuration for mount command
   lineinfile:
     path: /etc/sudoers
     line: "%#1280401187 ALL=(ALL) NOPASSWD: /bin/mount" # gid gdl_barzini_authentificated_users
     state: present
-    validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file 
+    validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
    
 - name: copy file with owner and permissions
   ansible.builtin.copy:
