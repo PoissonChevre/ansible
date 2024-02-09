@@ -17,3 +17,9 @@
     owner: u.ansible
     group: gdl_barzini_authentificated_users
     mode: '0755'
+
+- name: create common login script for all users
+  template:
+    src: logon_mnt_smb.sh.j2
+    dest: /etc/profile.d/logon_mnt_smb.sh
+    mode: '0755'

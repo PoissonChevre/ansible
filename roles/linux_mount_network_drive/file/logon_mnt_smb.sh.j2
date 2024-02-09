@@ -1,0 +1,21 @@
+#!/bin/bash
+
+############################################################################
+# Common Login Script for Mounting SMB Share
+# 
+# This script is executed for all users during login and checks for
+# the existence of the mount_smb_share.sh script in the public
+# directory before running it.
+# 
+# Author: Renaud Charlier
+# Date: 08-02-2024
+# Version: 1.0
+# 
+# Notes:
+#   - Ensure that mount_smb_share.sh is available in /home/mount_smb_share.sh
+#############################################################################
+
+# login script to execute mount_smb_share.sh
+if [[ -f /home/mount_smb_share.sh ]]; then
+    bash /home/mount_smb_share.sh
+fi
