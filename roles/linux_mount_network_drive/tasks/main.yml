@@ -18,7 +18,7 @@
     group: gdl_barzini_authentificated_users
     mode: '0755'
 
-- name: create common login script for all users
+- name: create logon script for all users (run the mount script)
   template:
     src: /etc/ansible/roles/linux_mount_network_drive/file/logon_mnt_smb.sh.j2
     dest: /etc/profile.d/logon_mnt_smb.sh

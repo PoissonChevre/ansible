@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #########################################################################################
-# Script to Mount SMB Share with Kerberos Authentication
+# Script to Mount SMB Share with Kerberos authentication
 #
 # Description:
 # This script automates the process of mounting an SMB share using
