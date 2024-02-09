@@ -15,6 +15,7 @@
     ansible.builtin.shell: |
       for user in /home/*
         do
+          user=$(basename "$user_path")
           symlink_path="/home/$user/Desktop/kontrast.desktop"
           target_path="/usr/share/applications/org.kde.kontrast.desktop"
           # Check if the symlink already exists
