@@ -29,7 +29,7 @@
 #########################################################################################
 
 # specify the SMB share path and the mount point
-smb_share="//SRV-INF-001/BARZIN_SHARE"
+smb_share="//SRV-INF-001/BARZINI_SHARE"
 mount_point="$HOME/BARZINI_SHARE"
 
 # capture current user ID/group ID in variables
