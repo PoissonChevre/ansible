@@ -14,7 +14,7 @@
 - name: add sudo configuration for executing bash script
   lineinfile:
     path: /etc/sudoers
-    line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/bash -c \"/srv/share/public/mount_smb_share.sh\""
+    line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/bash -c \"/home/mount_smb_share.sh\""
     state: present
     validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
 
@@ -25,10 +25,10 @@
     state: present
     validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file 
 
-# handlers:
-- name: restart sudo service
-  import_tasks: handlers/restart_sudo_service.yml
-    
+- name: reload sudo configuration
+  command: systemctl reload sudo
+  ignore_errors: true  # Ignore errors if sudo service is masked
+
 # task:    
 - name: copy file with owner and permissions
   ansible.builtin.copy:
