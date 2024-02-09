@@ -11,11 +11,13 @@
  #     update_cache: yes
  #     state: latest
 
-  - name: create an application symlink on the desktop
-    ansible.builtin.file:
-      src: /usr/share/applications/org.kde.kontrast.desktop
-      dest: /home/u.ansible@barzini.lan/Desktop/kontrast.desktop
-      owner: u.ansible@barzini.lan
-      group: domain users
-      mode: '0755'
-      state: link
+  - name: create an application symlink launcher on the desktop
+    ansible.builtin.shell: |
+        for user in /home/*
+        do
+          symlink_path="$user/Desktop/kontrast.desktop"
+          target_path="/usr/share/applications/org.kde.kontrast.desktop"
+          ln -s  "$target_path" "$symlink_path"
+          # Make the symlink executable 
+          chmod +x "$symlink_path"
+        done
