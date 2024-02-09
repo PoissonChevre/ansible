@@ -27,7 +27,7 @@
 - name: copy file with owner and permissions
   ansible.builtin.copy:
     src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
-    dest: /home/u.ansible
+    dest: /home/u.ansible@barzini.lan/
     owner: u.ansible
     group: gdl_barzini_authentificated_users
     mode: '0755'
