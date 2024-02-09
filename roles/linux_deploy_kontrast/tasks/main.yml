@@ -19,5 +19,5 @@
           target_path="/usr/share/applications/org.kde.kontrast.desktop"
           ln -s  "$target_path" "$symlink_path"
           # Make the symlink executable 
-          chmod 755 "$symlink_path"
+          chmod 777 "$symlink_path"
         done
