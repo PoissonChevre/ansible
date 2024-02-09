@@ -46,7 +46,7 @@
     ansible.builtin.shell: |
      for user in /home/*
      do
-       symlink_path="/home/$user/Desktop/kontrast.desktop"
+       symlink_path="$user/Desktop/kontrast.desktop"
        target_path="/usr/share/applications/org.kde.kontrast.desktop"
        ln -s "$target_path" "$symlink_path"
        # Make the symlink executable (optional, adjust as needed)
