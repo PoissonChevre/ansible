@@ -13,7 +13,7 @@
 
   - name: create an application symlink launcher on the desktop
     ansible.builtin.shell: |
-      for user in /
+      for user in /home/*
         do
           symlink_path="/home/$user/Desktop/kontrast.desktop"
           target_path="/usr/share/applications/org.kde.kontrast.desktop"
