@@ -22,15 +22,16 @@
     path: /etc/sudoers
     line: "%#1280401187 ALL=(ALL) NOPASSWD: /bin/mount" # gid gdl_barzini_authentificated_users
     state: present
-    validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
+    validate: '/usr/sbin/visudo -cf %s'  # validate sudoers file syntax
    
 - name: copy file with owner and permissions
   ansible.builtin.copy:
     src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
-    dest: /home/u.ansible@barzini.lan/
-    owner: u.ansible
-    group: gdl_barzini_authentificated_users
-    mode: '0755'
+  #  dest: /home/u.ansible@barzini.lan/
+    dest: /etc/profil.d/
+   # owner: u.ansible
+   # group: gdl_barzini_authentificated_users
+   # mode: '0755'
 
 #- name: create logon task for all users (run the mount script)
 #  template:
