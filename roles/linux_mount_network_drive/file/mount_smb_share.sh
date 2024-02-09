@@ -28,21 +28,23 @@
 # Good coding practices: variables, header, comments, environment variables & condition
 #########################################################################################
 
-# Specify the SMB share path and the mount point
+# specify the SMB share path and the mount point
 smb_share="//SRV-INF-001/BARZIN_SHARE"
 mount_point="$HOME/BARZINI_SHARE"
 
-# Capture current user ID/group ID in variables
+# capture current user ID/group ID in variables
 uid=$(id -u $USER)
 gid=$(id -g $USER)
 
-# Create the mount point directory if it does not exist
+# create the mount point directory if it does not exist
 if [ ! -d "$mount_point" ]; then
-    sudo mkdir -p "$mount_point"
+    sudo mkdir -p "$mount_point" || { echo "Failed to create the mount point directory."; exit 1; }
 fi
+# change ownership of the mount point directory to the current user
+chown $USER:$USER "$mount_point" || { echo "Failed to change ownership of the mount point directory."; exit 1; }
 
-# Attempt to mount the SMB share with Kerberos authentication
-# Using 'sec=krb5' for Kerberos security and specifying UID/GID for file access permissions
+# attempt to mount the SMB share with Kerberos authentication
+# using 'sec=krb5' for Kerberos security and specifying UID/GID for file access permissions
 if ! sudo mount -t cifs "$smb_share" "$mount_point" -o sec=krb5,uid=$uid,gid=$gid; then
     echo "Failed to mount the SMB share."
     exit 1
