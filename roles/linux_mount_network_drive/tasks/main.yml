@@ -27,7 +27,7 @@
 
 # handlers:
 - name: restart sudo service
-  import_tasks: handlers/restart_sudo.yml
+  import_tasks: handlers/restart_sudo_service.yml
     
 # task:    
 - name: copy file with owner and permissions
