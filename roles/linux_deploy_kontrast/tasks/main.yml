@@ -11,44 +11,17 @@
       update_cache: yes
       state: latest
 
-#  - name: create desktop shortcut 
-#    become: true
-#    ansible.builtin.file:
-#      path: "/home/u.ansible@barzini.lan/Desktop/kontrast.desktop"
-#      content: kontrast.desktop.j2
-#    group: domain users
-#    mode: '0755'
-#
- # Create kontrast shortcut on Ubuntu desktops 
- # - name: find desktop directory for all users
- #   ansible.builtin.find:
- #     paths: "/home"
- #     file_type: directory
- #     patterns: "Desktop"
- #   register: desktop_dir 
- #
- # - name: deploy kontrast desktop shortcut for each user
- #   ansible.builtin.template:
- #     src: kontrast.desktop.j2
- #     dest: "{{ item.path }}/kontrast.desktop"
- #     mode: '0755'
- #   with_items: "{{ desktop_dirs.files }}"
- #
- # - name: create an application symlink on the desktop
- #   ansible.builtin.file:
- #     src: /usr/share/applications/org.kde.kontrast.desktop
- #     dest: /home/u.ansible@barzini.lan/Desktop/kontrast.desktop
- #     owner: u.ansible@barzini.lan
- #     group: domain users
- #     mode: '0755'
- #     state: link
-  - name: Loop through Linux users
+  - name: create an application symlink launcher on the desktop
     ansible.builtin.shell: |
-     for user in /home/*
-     do
-       symlink_path="$user/Desktop/kontrast.desktop"
-       target_path="/usr/share/applications/org.kde.kontrast.desktop"
-       ln -s "$target_path" "$symlink_path"
-       # Make the symlink executable (optional, adjust as needed)
-       chmod +x "$symlink_path"
-     done
+      for user in /home/*
+      do
+        symlink_path="$user/Desktop/kontrast.desktop"
+        target_path="/usr/share/applications/org.kde.kontrast.desktop"
+        ln -s "$target_path" "$symlink_path"
+      # make the symlink executable 
+        chmod +x "$symlink_path"
+      # create a desktop entry file
+        desktop_entry_path="$user/Desktop/kontrast.desktop"
+        desktop_entry_content="[Desktop Entry]\nName=Kontrast\nExec=$target_path\nType=Application\n"
+        echo -e "$desktop_entry_content" > "$desktop_entry_path"
+      done
