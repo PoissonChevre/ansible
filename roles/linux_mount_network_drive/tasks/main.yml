@@ -23,7 +23,7 @@
     path: /etc/sudoers
     line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/mount"
     state: present
-    alidate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file 
+    validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file 
 
 # handlers:
 - name: restart sudo service
