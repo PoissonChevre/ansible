@@ -13,11 +13,11 @@
 
   - name: create an application symlink launcher on the desktop
     ansible.builtin.shell: |
-        for user in /home/*
+        for user in /home/u.ansible
         do
-          symlink_path="$user/Desktop/kontrast.desktop"
+          symlink_path="u.ansible/Desktop/kontrast.desktop"
           target_path="/usr/share/applications/org.kde.kontrast.desktop"
-          cp  "$target_path" "$symlink_path"
+          ln -s  "$target_path" "$symlink_path"
           # Make the symlink executable 
           chmod +x "$symlink_path"
         done
