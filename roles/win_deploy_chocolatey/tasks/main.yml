@@ -6,8 +6,7 @@
 
 - name: install chocolatey package & dependencies
   win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  loop:
+    name:
     - chocolatey
     - chocolatey-core.extension
+    state: present

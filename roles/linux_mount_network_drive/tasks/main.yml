@@ -3,6 +3,13 @@
 # tasks file for linux_copy_file
 # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html
 
+- name: ensure required packages are installed
+  apt: 
+    name:
+      - keyutils
+      - cifs-utils
+    state: present
+
 - name: copy file with owner and permissions
   ansible.builtin.copy:
     src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
