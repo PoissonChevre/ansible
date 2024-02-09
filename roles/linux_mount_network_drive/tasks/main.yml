@@ -26,7 +26,7 @@
     validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file 
 
 - name: reload sudo configuration
-  command: systemctl reload sudo
+  command: sudo systemctl reload sudo
   ignore_errors: true  # Ignore errors if sudo service is masked
 
 # task:    
