@@ -24,7 +24,7 @@
 # Notes:
 #   - Ensure the user has necessary permissions for mounting and Kerberos authentication.
 #   - Customize SMB share path and mount point.
-
+#
 # Good coding practices: variables, header, comments, environment variables & condition
 #########################################################################################
 
