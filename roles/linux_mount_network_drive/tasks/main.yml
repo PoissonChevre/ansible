@@ -13,21 +13,21 @@
 - name: add sudo configuration for executing bash script
   lineinfile:
     path: /etc/sudoers
-    line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/bash -c \"/home/mount_smb_share.sh\""
+    line: "%#1280401187 ALL=(ALL) NOPASSWD: /bin/bash -c \"/home/mount_smb_share.sh\"" # gid gdl_barzini_authentificated_users
     state: present
     validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
 
 - name: add sudo configuration for mount command
   lineinfile:
     path: /etc/sudoers
-    line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/mount"
+    line: "%#1280401187 ALL=(ALL) NOPASSWD: /bin/mount" # gid gdl_barzini_authentificated_users
     state: present
     validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file 
    
 - name: copy file with owner and permissions
   ansible.builtin.copy:
     src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
-    dest: /home/
+    dest: /home/u.ansible
     owner: u.ansible
     group: gdl_barzini_authentificated_users
     mode: '0755'
