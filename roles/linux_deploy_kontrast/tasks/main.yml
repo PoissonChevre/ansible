@@ -21,7 +21,5 @@
       # make the symlink executable 
         chmod +x "$symlink_path"
       # create a desktop entry file
-        desktop_entry_path="$user/Desktop/kontrast.desktop"
-        desktop_entry_content="[Desktop Entry]\nName=Kontrast\nExec=$target_path\nType=Application\n"
-        echo -e "$desktop_entry_content" > "$desktop_entry_path"
+        echo -e "[Desktop Entry]\nName=Kontrast\nExec=$target_path\nType=Application" > "$symlink_path"
       done
