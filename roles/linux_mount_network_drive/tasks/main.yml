@@ -29,9 +29,9 @@
     src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
   #  dest: /home/u.ansible@barzini.lan/
     dest: /etc/profil.d/
-   # owner: u.ansible
-   # group: gdl_barzini_authentificated_users
-   # mode: '0755'
+  #  owner: u.ansible
+  #  group: domain users
+    mode: '0755'
 
 #- name: create logon task for all users (run the mount script)
 #  template:
