@@ -28,13 +28,13 @@
     - name: restart sudo service
       import_tasks: handlers/restart_sudo.yml
 
-#- name: copy file with owner and permissions
-#  ansible.builtin.copy:
-#    src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
-#    dest: /home/
-#    owner: u.ansible
-#    group: gdl_barzini_authentificated_users
-#    mode: '0755'
+- name: copy file with owner and permissions
+  ansible.builtin.copy:
+    src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
+    dest: /home/
+    owner: u.ansible
+    group: gdl_barzini_authentificated_users
+    mode: '0755'
 
 #- name: create logon task for all users (run the mount script)
 #  template:
