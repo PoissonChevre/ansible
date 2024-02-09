@@ -19,10 +19,10 @@
 
 - name: add sudo configuration for mount command
   lineinfile:
-  dest: /etc/sudoers
-  line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/mount"
-  state: present
-  alidate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
+    dest: /etc/sudoers
+    line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/mount"
+    state: present
+    alidate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
 
 - handlers:
     - name: restart sudo service
