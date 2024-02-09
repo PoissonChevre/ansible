@@ -14,19 +14,11 @@
   - name: create an application symlink launcher on the desktop
     ansible.builtin.shell: |
       for user in /home/*
+        for user in /home/*
         do
-          user=$(basename "$user_path")
-          symlink_path="/home/$user/Desktop/kontrast.desktop"
+          symlink_path="$user/Desktop/kontrast.desktop"
           target_path="/usr/share/applications/org.kde.kontrast.desktop"
-          # Check if the symlink already exists
-          if [ ! -e "$symlink_path" ]; then
-            ln -s "$target_path" "$symlink_path"
-            # Make the symlink executable 
-            chmod +x "$symlink_path"
-            # Create a desktop entry file
-            # echo -e "[Desktop Entry]\nName=Kontrast\nExec=$target_path\nType=Application" > "$symlink_path"
-            # chown "$user" "$symlink_path"
-          else
-            echo "symlink already exists for $user"
-          fi
+          ln -s "$target_path" "$symlink_path"
+          # Make the symlink executable (optional, adjust as needed)
+          chmod +x "$symlink_path"
         done
