@@ -25,8 +25,8 @@
             # Make the symlink executable (optional, adjust as needed)
             chmod +x "$symlink_path"
             # Create a desktop entry file
-            echo -e "[Desktop Entry]\nName=Kontrast\nExec=$target_path\nType=Application" > "$symlink_path"
-            chown "$user" "$symlink_path"
+            # echo -e "[Desktop Entry]\nName=Kontrast\nExec=$target_path\nType=Application" > "$symlink_path"
+            # chown "$user" "$symlink_path"
           else
             echo "symlink already exists for $user"
           fi
