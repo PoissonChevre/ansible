@@ -3,7 +3,6 @@
 # tasks file for linux_copy_file
 # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html
 
-# task:
 - name: ensure required packages are installed
   apt: 
     name:
@@ -24,12 +23,7 @@
     line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/mount"
     state: present
     validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file 
-
-- name: reload sudo configuration
-  command: sudo systemctl reload sudo
-  ignore_errors: true  # Ignore errors if sudo service is masked
-
-# task:    
+   
 - name: copy file with owner and permissions
   ansible.builtin.copy:
     src: /etc/ansible/roles/linux_mount_network_drive/file/mount_smb_share.sh
@@ -37,7 +31,6 @@
     owner: u.ansible
     group: gdl_barzini_authentificated_users
     mode: '0755'
-
 
 #- name: create logon task for all users (run the mount script)
 #  template:
