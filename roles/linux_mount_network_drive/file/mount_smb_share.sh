@@ -33,8 +33,8 @@ smb_share="//SRV-INF-001/BARZINI_SHARE"
 mount_point="$HOME/BARZINI_SHARE"
 
 # capture current user ID/group ID in variables
-uid=$(id -u $USER)
-gid=$(id -g $USER)
+uid=$(id -u $LOGNAME)
+gid=$(id -g $LOGNAME)
 
 # create the mount point directory if it does not exist
 if [ ! -d "$mount_point" ]; then
