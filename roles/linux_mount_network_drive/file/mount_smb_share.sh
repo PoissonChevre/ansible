@@ -41,7 +41,7 @@ if [ ! -d "$mount_point" ]; then
     sudo mkdir -p "$mount_point" || { echo "Failed to create the mount point directory."; exit 1; }
 fi
 # change ownership of the mount point directory to the current user
-chown "$uid:$gid" "$mount_point" || { echo "Failed to change ownership of the mount point directory."; exit 1; }
+sudo chown "$uid:$gid" "$mount_point" || { echo "Failed to change ownership of the mount point directory."; exit 1; }
 
 # attempt to mount the SMB share with Kerberos authentication
 # using 'sec=krb5' for Kerberos security and specifying UID/GID for file access permissions
