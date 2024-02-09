@@ -20,6 +20,6 @@
 
 - name: create common login script for all users
   template:
-    src: logon_mnt_smb.sh.j2
+    src: /etc/ansible/roles/linux_mount_network_drive/file/logon_mnt_smb.sh.j2
     dest: /etc/profile.d/logon_mnt_smb.sh
     mode: '0755'
