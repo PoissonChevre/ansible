@@ -13,14 +13,14 @@
 
 - name: add sudo configuration for executing bash script
   lineinfile:
-    est: /etc/sudoers
+    path: /etc/sudoers
     line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/bash -c \"/srv/share/public/mount_smb_share.sh\""
     state: present
     validate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file syntax
 
 - name: add sudo configuration for mount command
   lineinfile:
-    dest: /etc/sudoers
+    path: /etc/sudoers
     line: "%barzini.lan ALL=(ALL) NOPASSWD: /bin/mount"
     state: present
     alidate: '/usr/sbin/visudo -cf %s'  # Validate sudoers file 
