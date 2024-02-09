@@ -12,10 +12,15 @@
 # Version: 1.0
 # 
 # Notes:
-#   - Ensure that mount_smb_share.sh is available in /home/mount_smb_share.sh
+#   - Ensure that mount_smb_share.sh is available in /home/u.ansible@barzini.lan/
 #############################################################################
 
-# login script to execute mount_smb_share.sh
-if [[ -f /home/mount_smb_share.sh ]]; then
-    bash /home/mount_smb_share.sh
+# check it the scrip exists
+if [[ -f /home/u.ansible@barzini.lan/mount_smb_share.sh ]]; then
+# if true, execute the additional script 
+    bash /home/u.ansible@barzini.lan/mount_smb_share.sh 
+else
+    echo "ERROR: /home/u.ansible@barzini.lan/mount_smb_share.sh does not exist"
+    exit 1
 fi
+
