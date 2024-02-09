@@ -34,11 +34,11 @@
  #     mode: '0755'
  #   with_items: "{{ desktop_dirs.files }}"
  #
-  #- name: create an application symlink on the desktop
-  #  ansible.builtin.file:
-  #    src: kontrast.desktop.j2
-  #    dest: /home/u.ansible@barzini.lan/Desktop/kontrast.desktop
-  #    owner: u.ansible@barzini.lan
-  #    group: domain users
-  #    mode: '0755'
-  #    state: link
+  - name: create an application symlink on the desktop
+    ansible.builtin.file:
+      src: /usr/share/applications/org.kde.kontrast.desktop
+      dest: /home/u.ansible@barzini.lan/Desktop/kontrast.desktop
+      owner: u.ansible@barzini.lan
+      group: domain users
+      mode: '0755'
+      state: link
