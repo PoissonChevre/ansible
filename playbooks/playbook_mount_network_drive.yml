@@ -8,7 +8,7 @@
   roles:
     - linux_mount_network_drive
 
-- hosts: win10pro
-  gather_facts: true  # fact_caching_timeout = 3600 (s)
-  roles:
-    - win_mount_network_drive
+#- hosts: win10pro
+#  gather_facts: true  # fact_caching_timeout = 3600 (s)
+#  roles:
+#    - win_mount_network_drive
