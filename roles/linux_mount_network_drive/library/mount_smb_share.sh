@@ -38,7 +38,7 @@ gid=$(id -g $LOGNAME)
 
 # create the mount point directory if it does not exist
 if [ ! -d "$mount_point" ]; then
-    mkdir -p "$mount_point" || { echo "Failed to create the mount point directory."; exit 2; }
+    mkdir -p "$mount_point" || { echo "Failed to create the mount point directory."; exit -1; }
 fi
 
 # Check if we can execute mount command with sudo without a password
