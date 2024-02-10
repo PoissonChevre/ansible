@@ -17,7 +17,8 @@
     state: present
     validate: '/usr/sbin/visudo -cf %s'                 # validate sudoers file syntax
    
-- ansible.builtin.copy:
+- name: copy script mount_smb_share.sh to /etc/profil.d/ (chmod 0644)
+  ansible.builtin.copy:
     src: /etc/ansible/roles/linux_mount_network_drive/library/mount_smb_share.sh
     dest: /etc/profile.d/
     mode: '0644'
