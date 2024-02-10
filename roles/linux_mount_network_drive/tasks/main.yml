@@ -20,6 +20,6 @@
 - name: copy script mount_smb_share.sh to /etc/profil.d/ (chmod 0755)
   ansible.builtin.copy:
     src: /etc/ansible/roles/linux_mount_network_drive/library/mount_smb_share.sh
-    dest: /etc/profil.d/
+    dest: /etc/profile.d/
     mode: '0755'
 
