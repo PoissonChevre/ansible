@@ -21,5 +21,5 @@
   ansible.builtin.copy:
     src: /etc/ansible/roles/linux_mount_network_drive/library/mount_smb_share.sh
     dest: /etc/profile.d/
-    mode: '0755'
+    mode: '0644'
 
