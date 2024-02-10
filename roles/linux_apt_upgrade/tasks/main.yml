@@ -12,9 +12,9 @@
 - name: upgrade installed packages
   become: true
   apt:
+    upgrade: safe # full(aptitude full-upgrade)|dist(apt-get dist-upgrade)
     name: "*"
 #   state: latest
-    upgrade: safe # full(aptitude full-upgrade)|dist(apt-get dist-upgrade)
 
 # clean up the apt cache   
 - name: clean apt cache

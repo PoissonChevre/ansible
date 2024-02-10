@@ -5,7 +5,7 @@
 
 - name: copy powershell script on file server \\SRV-INF-001\app_script$\
   win_copy:
-   src: /etc/ansible/roles/win_mount_network_drive/file/MountNetworkDrive.ps1
+   src: /etc/ansible/roles/win_mount_network_drive/library/MountNetworkDrive.ps1
    dest: \\SRV-INF-001\app_script$\MountNetworkDrive.ps1
    register: result
    until: result is success

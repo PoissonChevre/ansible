@@ -4,20 +4,19 @@
 # https://apps.kde.org/fr/kontrast/
 # https://ubuntuhandbook.org/index.php/2021/11/check-contrast-colors-ubuntu-kontrast/
 
-  - name: update apt cache and install the latest kontrast package
-    become: true
-    apt: 
-      name: kontrast 
-      update_cache: yes
-      state: latest
+- name: update apt cache and install the latest kontrast package
+  apt: 
+    name: kontrast 
+    update_cache: yes
+    state: latest
 
-  - name: create an application symlink launcher on the desktop
-    ansible.builtin.shell: |
-        for user in /home/*
-        do
-          symlink_path="$user/Desktop/kontrast.desktop"
-          target_path="/usr/share/applications/org.kde.kontrast.desktop"
-          ln -s  "$target_path" "$symlink_path"
-          # Make the symlink executable 
-          chmod +x "$symlink_path"
-        done
+- name: create an application symlink (launcher) on the desktop
+  ansible.builtin.shell: |
+      for user in /home/*
+      do
+        symlink_path="$user/Desktop/kontrast.desktop"
+        target_path="/usr/share/applications/org.kde.kontrast.desktop"
+        ln -s  "$target_path" "$symlink_path"
+        # Make the symlink executable 
+        chmod +x "$symlink_path"
+      done
