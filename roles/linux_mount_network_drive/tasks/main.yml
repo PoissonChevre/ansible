@@ -3,14 +3,14 @@
 # tasks file for linux_copy_file
 # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html
 
-- name: ensure required packages are installed (keyutils - cifs-utils)
+- name: ensure required packages are installed (keyutils & cifs-utils)
   apt: 
     name:
       - keyutils
       - cifs-utils
     state: present
 
-- name: add sudo configuration for mount command
+- name: add sudo configuration for mount command (GDL_BARZINI_AUTHENTICATED)
   lineinfile:
     path: /etc/sudoers
     line: "%#1280401187 ALL=(ALL) NOPASSWD: /bin/mount" # gid gdl_barzini_authentificated_users
