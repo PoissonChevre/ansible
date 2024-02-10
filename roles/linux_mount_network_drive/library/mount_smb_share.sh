@@ -41,6 +41,12 @@ if [ ! -d "$mount_point" ]; then
     mkdir -p "$mount_point" || { echo "Failed to create the mount point directory."; exit 1; }
 fi
 
+# Check if we can execute mount command with sudo without a password
+if ! sudo -ln 2>/dev/null | grep -q mount; then
+    echo "You do not have sudo rights to mount SMB shares. Please check your sudoers configuration."
+    exit 1
+fi
+
 # attempt to mount the SMB share with Kerberos authentication
 # using 'sec=krb5' for Kerberos for security and specifying UID/GID for file access permissions
 if ! sudo mount -t cifs "$smb_share" "$mount_point" -o sec=krb5,uid=$uid,gid=$gid; then
