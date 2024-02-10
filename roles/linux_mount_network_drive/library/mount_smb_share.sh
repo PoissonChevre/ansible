@@ -36,22 +36,22 @@ mount_point="$HOME/BARZINI_SHARE"
 uid=$(id -u $LOGNAME)
 gid=$(id -g $LOGNAME)
 
-# create the mount point directory if it does not exist
-if [ ! -d "$mount_point" ]; then
-    mkdir -p "$mount_point" || { echo "Failed to create the mount point directory."; break; }
-fi
-
-# Check if we can execute mount command with sudo without a password
+# check if the user can execute mount command with sudo && without a password
 if ! sudo -ln 2>/dev/null | grep -q mount; then
     echo "You do not have sudo rights to mount SMB shares. Please check your sudoers configuration."
-    break
+    exit 2
+fi
+
+# create the mount point directory if it does not exist
+if [ ! -d "$mount_point" ]; then
+    mkdir -p "$mount_point" || { echo "Failed to create the mount point directory."; exit 2; }
 fi
 
 # attempt to mount the SMB share with Kerberos authentication
 # using 'sec=krb5' for Kerberos for security and specifying UID/GID for file access permissions
 if ! sudo mount -t cifs "$smb_share" "$mount_point" -o sec=krb5,uid=$uid,gid=$gid; then
     echo "Failed to mount the SMB share."
-    break
+    exit 2
 fi
 
 echo "Successfully mounted the SMB share at $mount_point."
