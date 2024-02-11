@@ -2,13 +2,13 @@
 # https://www.cherryservers.com/blog/ansible-roles-tutorial
 # ansible-galaxy init "role name"
 
-- hosts: ubuntu
-  gather_facts: true # fact_caching_timeout = 3600 (s)
-  become: true
-  roles:
-    - linux_apt_upgrade
-    
-#- hosts: win10pro
+#- hosts: ubuntu
 #  gather_facts: true # fact_caching_timeout = 3600 (s)
+#  become: true
 #  roles:
-#    - win_update
+#    - linux_apt_upgrade
+    
+- hosts: win10pro
+  gather_facts: true # fact_caching_timeout = 3600 (s)
+  roles:
+    - win_update
